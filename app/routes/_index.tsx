@@ -62,21 +62,23 @@ export const loader = async () => {
 
   const client = new PrismaClient();
   const dataForm = await client.firstData.findMany();
+  const secondData = await client.secondData.findMany();
   const lastData = await client.lastData.findMany();
 
   return {
       dataForm,
+      secondData,
       lastData
   }
 }
 
 export default function Index() {
   const hora_actual = new Date().toLocaleTimeString();
-
-  const {dataForm, lastData} = useLoaderData<typeof loader>()
+  
+  const {dataForm, lastData , secondData } = useLoaderData<typeof loader>()
 
   const autos_estacionados = dataForm.length;
-  const autos_totales = lastData.length;
+  const autos_totales = secondData.length;
   const autos_oficiales = dataForm.filter((data) => data.tipo === "Oficial").length;
   const autos_residentes = dataForm.filter((data) => data.tipo === "Residente").length;
   const autos_no_residentes = dataForm.filter((data) => data.tipo === "No Residentes").length;
@@ -86,7 +88,7 @@ export default function Index() {
       <FormCard title="Agregar Vehiculo" subtitle="Introduce los datos correctamente" 
         children={
         <Form method="post" >
-          <Input placeholder='Número de placa' name="placa"/>
+          <Input placeholder='Número de placa' name="placa" styles="w-full"/>
           <Select name="tipo" label="Tipo de Vehiculo " options={[
             'Oficial', 'Residente', 'No Residentes'
           ]}/>

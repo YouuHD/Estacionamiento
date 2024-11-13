@@ -31,8 +31,11 @@ export default function Reportes() {
 
   return (
     <>
-
-        <Table title="Reporte general" subtitle="Reporte sobre todos los vehiculos agregados"/>
+      <Table 
+        title="Reporte general" 
+        subtitle="Reporte sobre todos los vehiculos que han pasado por el estacionamiento"
+        data={dataForm}
+        />
     </>
   );
 }

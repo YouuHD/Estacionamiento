@@ -2,7 +2,6 @@ import { useLocation } from 'react-router-dom';
 import LinkTo from '../link';
 import { routes } from './routes'
 import { Fragment } from 'react/jsx-runtime';
-import { Button } from '../button';
 
 export default function SideBar(){
     
@@ -26,9 +25,7 @@ export default function SideBar(){
                     </Fragment>
                 ))}
             </ul>
-            <div>
-                <Button styles='mt-4 m-4 sticky top-16 z-40 flex flex-col px-4 ' >Modo</Button>
-            </div>
+            
         </aside>
     )
 }
