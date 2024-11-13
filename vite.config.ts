@@ -18,7 +18,13 @@ export default defineConfig({
         v3_singleFetch: true,
         v3_lazyRouteDiscovery: true,
       },
+      
     }),
     tsconfigPaths(),
+    
   ],
+  server: {
+    host: true,
+    port: 5173,
+  }
 });
